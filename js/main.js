@@ -44,15 +44,19 @@ const choiceCopy = {
   }
 };
 
-document.querySelectorAll(".choice").forEach((button) => {
+document.querySelectorAll(".choice[data-choice]").forEach((button) => {
   button.addEventListener("click", () => {
     const choice = choiceCopy[button.dataset.choice];
-    document.querySelectorAll(".choice").forEach((item) => {
+    if (!choice) return;
+    document.querySelectorAll(".choice[data-choice]").forEach((item) => {
       item.setAttribute("aria-pressed", item === button ? "true" : "false");
     });
     const result = document.querySelector("#choice-result");
-    document.querySelector("#choice-title").textContent = choice.title;
-    document.querySelector("#choice-copy").textContent = choice.text;
+    const title = document.querySelector("#choice-title");
+    const copy = document.querySelector("#choice-copy");
+    if (!result || !title || !copy) return;
+    title.textContent = choice.title;
+    copy.textContent = choice.text;
     result.hidden = false;
     const cover = document.querySelector("#cover");
     if (cover) cover.value = choice.cover;
@@ -194,6 +198,20 @@ if (quiz && quizForm) {
       const key = button.dataset.key;
       const value = button.dataset.value;
       answers[key] = value;
+      try {
+        if (key === "who") {
+          const coverFor = {
+            "Just me": "Just me",
+            "Me and my family": "Me and my family",
+            "Self-employed": "I’m self-employed",
+            "My business": "My business"
+          }[value];
+          if (coverFor) sessionStorage.setItem("mmc-cover", coverFor);
+        }
+        if (key === "situation") {
+          sessionStorage.setItem("mmc-insured", value === "Already covered" ? "Yes — I’d like it reviewed" : "No");
+        }
+      } catch (err) {}
       const field = quizForm.querySelector(`#quiz-${key}`);
       if (field) field.value = value;
       button.parentElement.querySelectorAll(".quiz-option").forEach((item) => {

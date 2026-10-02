@@ -165,6 +165,15 @@ button, input, select, textarea { font-family: inherit; }
   border-radius: 20px;
 }
 .about-tease h2 { font-size: clamp(1.8rem, 3vw, 2.4rem); }
+.faq { display: grid; gap: 0.75rem; }
+.faq article {
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 1.15rem 1.25rem;
+}
+.faq h3 { font-size: 1.35rem; }
+.faq p { margin: 0.35rem 0 0; }
 .kicker {
   letter-spacing: 0.14em;
   text-transform: uppercase;
@@ -414,7 +423,7 @@ h3 { font-size: 1.45rem; margin: 0 0 0.4rem; }
   border-radius: inherit;
 }
 .quiz-options { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; }
-#quiz { scroll-margin-top: 96px; }
+#start, #quiz { scroll-margin-top: 96px; }
 .quiz-option {
   display: flex;
   flex-direction: row;
