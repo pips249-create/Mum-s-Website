@@ -165,7 +165,7 @@ if (quiz && quizForm) {
   const bar = quiz.querySelector("#quiz-bar");
   const count = quiz.querySelector("#quiz-count");
   const success = quiz.querySelector("#quiz-success");
-  const summary = quiz.querySelector("#quiz-summary");
+  const match = quiz.querySelector("#quiz-match");
 
   const showStep = (number) => {
     steps.forEach((step) => {
@@ -188,22 +188,40 @@ if (quiz && quizForm) {
     if (button) button.disabled = listOf(key).length === 0;
   };
 
-  const whoLine = {
-    "Just me": "just you",
-    "Me and my family": "you and your family",
-    "Self-employed": "you as someone self-employed",
-    "My business": "your business"
+  const whoLabel = {
+    "Just me": "Just me",
+    "Me and my family": "Me and the family",
+    "Self-employed": "Self-employed",
+    "My business": "My team or business"
   };
-  const situationLine = {
-    "New to private healthcare": "You are new to private healthcare",
-    "Already covered": "You already have cover",
-    "Had cover before": "You have had cover before"
+  const priorityLabel = {
+    "Faster specialist access": "Skipping waiting lists",
+    "Active rewards": "Active rewards",
+    "Broad cover and cancer care": "Peace of mind",
+    "Mental health support": "Mental health support"
   };
-  const priorityLine = {
-    "Faster specialist access": "You want a faster route to a specialist. What that includes depends on the plan.",
-    "Active rewards": "You are interested in rewards for staying active, such as an Apple Watch, a gym discount or coffee. Those offers depend on the plan and can change.",
-    "Broad cover and cancer care": "You want broader cover, including cancer care where the plan includes it.",
-    "Mental health support": "You want mental health support, such as therapy or wellbeing tools, where the plan includes them."
+  const situationLabel = {
+    "New to private healthcare": "Brand new to private healthcare",
+    "Already covered": "Already covered",
+    "Had cover before": "Had cover before"
+  };
+  const timeLabel = {
+    "Morning, 9am to 12pm": "Morning, 9am to 12pm",
+    "Lunch, 12pm to 2pm": "Lunch, 12pm to 2pm",
+    "Late afternoon, 2pm to 5pm": "Late afternoon, 2pm to 5pm"
+  };
+  const fillMatch = (rows) => {
+    if (!match) return;
+    match.replaceChildren();
+    rows.forEach(([label, value]) => {
+      const group = document.createElement("div");
+      const term = document.createElement("dt");
+      const detail = document.createElement("dd");
+      term.textContent = label;
+      detail.textContent = value;
+      group.append(term, detail);
+      match.append(group);
+    });
   };
 
   quiz.querySelectorAll(".quiz-option[data-value]").forEach((button) => {
@@ -275,6 +293,7 @@ if (quiz && quizForm) {
     }
 
     const name = String(data.get("first_name") || "").trim();
+    const lastName = String(data.get("last_name") || "").trim();
     const email = String(data.get("email") || "").trim();
     const phone = String(data.get("phone") || "").trim();
     const times = [...quizForm.querySelectorAll('input[name="time"]:checked')].map((input) => input.value);
@@ -283,6 +302,7 @@ if (quiz && quizForm) {
     const priority = Array.isArray(answers.priority) ? answers.priority : [];
 
     if (name.length < 2) return showError("Please add your first name.");
+    if (lastName.length < 2) return showError("Please add your last name.");
     if (phone.replace(/\D/g, "").length < 10) return showError("Please add a phone number Rosie can call.");
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return showError("Please add a valid email address.");
     if (!times.length) return showError("Please choose a time for Rosie to call.");
@@ -291,7 +311,13 @@ if (quiz && quizForm) {
       return showError("Please go back and answer each question.");
     }
 
-    summary.textContent = `Rosie will prepare a conversation about cover for ${joinList(who.map((item) => whoLine[item]))}. ${priority.map((item) => priorityLine[item]).join(" ")} ${situationLine[answers.situation]}, and your week sounds ${answers.activity.toLowerCase()}. She will explain what a plan can and cannot include. This is not a quote, and it is not a health assessment.`;
+    fillMatch([
+      ["Looking after", joinList(who.map((item) => whoLabel[item]))],
+      ["Matters most", joinList(priority.map((item) => priorityLabel[item]))],
+      ["Starting from", situationLabel[answers.situation] || answers.situation],
+      ["A typical week", answers.activity],
+      ["Best time to talk", joinList(times.map((item) => timeLabel[item] || item))]
+    ]);
 
     const button = quizForm.querySelector("button[type=submit]");
     button.disabled = true;
@@ -310,7 +336,7 @@ if (quiz && quizForm) {
       button.textContent = "See my match";
       const subject = encodeURIComponent("Cover and rewards match");
       const body = encodeURIComponent(
-        `First name: ${name}\nEmail: ${email}\nPhone: ${phone}\nBest time: ${times.join(", ")}\n\nWho: ${who.join(", ")}\nPriority: ${priority.join(", ")}\nSituation: ${answers.situation}\nActivity: ${answers.activity}\n\nCover and rewards match. Not a quote.`
+        `First name: ${name}\nLast name: ${lastName}\nEmail: ${email}\nPhone: ${phone}\nBest time: ${times.join(", ")}\n\nWho: ${who.join(", ")}\nPriority: ${priority.join(", ")}\nSituation: ${answers.situation}\nActivity: ${answers.activity}\n\nCover and rewards match. Not a quote.`
       );
       showError("The form could not be sent just now. You can email Rosie directly.");
       const fallback = quizForm.querySelector(".fallback");
