@@ -158,7 +158,8 @@ if (form) {
 const quiz = document.querySelector("#quiz");
 const quizForm = document.querySelector("#quiz-form");
 if (quiz && quizForm) {
-  const answers = {};
+  const answers = { who: [], priority: [] };
+  const multiKeys = new Set(["who", "priority"]);
   const steps = [...quiz.querySelectorAll(".quiz-step")];
   const stepNum = quiz.querySelector("#quiz-step-num");
   const bar = quiz.querySelector("#quiz-bar");
@@ -173,6 +174,18 @@ if (quiz && quizForm) {
     stepNum.textContent = String(number);
     bar.style.width = `${number * 20}%`;
     quiz.scrollIntoView({ block: "start" });
+  };
+
+  const listOf = (key) => [...quiz.querySelectorAll(`.quiz-option[data-key="${key}"][aria-pressed="true"]`)].map((item) => item.dataset.value);
+  const joinList = (items) => {
+    const list = items.filter(Boolean);
+    if (list.length <= 1) return list[0] || "";
+    if (list.length === 2) return `${list[0]} and ${list[1]}`;
+    return `${list.slice(0, -1).join(", ")}, and ${list[list.length - 1]}`;
+  };
+  const refreshNext = (key) => {
+    const button = quiz.querySelector(`.quiz-next[data-for="${key}"]`);
+    if (button) button.disabled = listOf(key).length === 0;
   };
 
   const whoLine = {
@@ -197,33 +210,49 @@ if (quiz && quizForm) {
     button.addEventListener("click", () => {
       const key = button.dataset.key;
       const value = button.dataset.value;
-      answers[key] = value;
+      if (multiKeys.has(key)) {
+        const on = button.getAttribute("aria-pressed") === "true";
+        button.setAttribute("aria-pressed", on ? "false" : "true");
+      } else {
+        button.parentElement.querySelectorAll(".quiz-option").forEach((item) => {
+          item.setAttribute("aria-pressed", item === button ? "true" : "false");
+        });
+      }
+      const values = multiKeys.has(key) ? listOf(key) : value;
+      answers[key] = values;
+      const field = quizForm.querySelector(`#quiz-${key}`);
+      if (field) field.value = Array.isArray(values) ? values.join(", ") : values;
       try {
         if (key === "who") {
-          const coverFor = {
+          const coverMap = {
             "Just me": "Just me",
             "Me and my family": "Me and my family",
             "Self-employed": "I’m self-employed",
             "My business": "My business"
-          }[value];
-          if (coverFor) sessionStorage.setItem("mmc-cover", coverFor);
+          };
+          const picked = ["My business", "Self-employed", "Me and my family", "Just me"].find((item) => values.includes(item));
+          if (picked && coverMap[picked]) sessionStorage.setItem("mmc-cover", coverMap[picked]);
         }
         if (key === "situation") {
           sessionStorage.setItem("mmc-insured", value === "Already covered" ? "Yes — I’d like it reviewed" : "No");
         }
       } catch (err) {}
-      const field = quizForm.querySelector(`#quiz-${key}`);
-      if (field) field.value = value;
-      button.parentElement.querySelectorAll(".quiz-option").forEach((item) => {
-        item.setAttribute("aria-pressed", item === button ? "true" : "false");
-      });
-      const step = Number(button.closest(".quiz-step").dataset.step);
-      if (step < 5) showStep(step + 1);
+      refreshNext(key);
+      if (!multiKeys.has(key)) {
+        const step = Number(button.closest(".quiz-step").dataset.step);
+        if (step < 5) showStep(step + 1);
+      }
     });
   });
 
   quiz.querySelectorAll("[data-goto]").forEach((button) => {
     button.addEventListener("click", () => showStep(Number(button.dataset.goto)));
+  });
+  quiz.querySelectorAll("[data-next]").forEach((button) => {
+    button.addEventListener("click", () => {
+      if (button.disabled) return;
+      showStep(Number(button.dataset.next));
+    });
   });
 
   quizForm.addEventListener("submit", async (event) => {
@@ -248,19 +277,21 @@ if (quiz && quizForm) {
     const name = String(data.get("first_name") || "").trim();
     const email = String(data.get("email") || "").trim();
     const phone = String(data.get("phone") || "").trim();
-    const time = String(data.get("time") || "");
+    const times = [...quizForm.querySelectorAll('input[name="time"]:checked')].map((input) => input.value);
     const consent = quizForm.querySelector("#quiz-consent").checked;
+    const who = Array.isArray(answers.who) ? answers.who : [];
+    const priority = Array.isArray(answers.priority) ? answers.priority : [];
 
     if (name.length < 2) return showError("Please add your first name.");
     if (phone.replace(/\D/g, "").length < 10) return showError("Please add a phone number Rosie can call.");
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return showError("Please add a valid email address.");
-    if (!time) return showError("Please choose a time for Rosie to call.");
+    if (!times.length) return showError("Please choose a time for Rosie to call.");
     if (!consent) return showError("Please agree to being contacted, and confirm you have read the privacy policy.");
-    if (!answers.who || !answers.priority || !answers.situation || !answers.activity) {
+    if (!who.length || !priority.length || !answers.situation || !answers.activity) {
       return showError("Please go back and answer each question.");
     }
 
-    summary.textContent = `Rosie will prepare a conversation about cover for ${whoLine[answers.who]}. ${priorityLine[answers.priority]} ${situationLine[answers.situation]}, and your week sounds ${answers.activity.toLowerCase()}. She will explain what a plan can and cannot include. This is not a quote, and it is not a health assessment.`;
+    summary.textContent = `Rosie will prepare a conversation about cover for ${joinList(who.map((item) => whoLine[item]))}. ${priority.map((item) => priorityLine[item]).join(" ")} ${situationLine[answers.situation]}, and your week sounds ${answers.activity.toLowerCase()}. She will explain what a plan can and cannot include. This is not a quote, and it is not a health assessment.`;
 
     const button = quizForm.querySelector("button[type=submit]");
     button.disabled = true;
@@ -279,7 +310,7 @@ if (quiz && quizForm) {
       button.textContent = "See my match";
       const subject = encodeURIComponent("Cover and rewards match");
       const body = encodeURIComponent(
-        `First name: ${name}\nEmail: ${email}\nPhone: ${phone}\nBest time: ${time}\n\nWho: ${answers.who}\nPriority: ${answers.priority}\nSituation: ${answers.situation}\nActivity: ${answers.activity}\n\nCover and rewards match. Not a quote.`
+        `First name: ${name}\nEmail: ${email}\nPhone: ${phone}\nBest time: ${times.join(", ")}\n\nWho: ${who.join(", ")}\nPriority: ${priority.join(", ")}\nSituation: ${answers.situation}\nActivity: ${answers.activity}\n\nCover and rewards match. Not a quote.`
       );
       showError("The form could not be sent just now. You can email Rosie directly.");
       const fallback = quizForm.querySelector(".fallback");

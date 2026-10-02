@@ -463,6 +463,14 @@ h3 { font-size: 1.45rem; margin: 0 0 0.4rem; }
 .quiz-option small { display: block; font-weight: 500; color: var(--muted); margin-top: 0.15rem; }
 .quiz-option[aria-pressed="true"] small { color: rgba(255, 252, 248, 0.86); }
 .quiz-nav { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 1rem; }
+.start-stage .quiz-next {
+  background: white;
+  color: var(--navy);
+  border-color: white;
+}
+.start-stage .quiz-next:disabled { opacity: 0.45; cursor: not-allowed; }
+.quiz-form .quiz-option:has(input:checked) { background: var(--magenta); color: white; }
+.quiz-form .quiz-option:has(input:checked) small { color: rgba(255, 252, 248, 0.86); }
 .start-stage .quiz-back {
   color: white;
   border-color: rgba(255, 252, 248, 0.4);

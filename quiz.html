@@ -20,7 +20,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,620&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/styles.css?v=20">
+  <link rel="stylesheet" href="css/styles.css?v=21">
 </head>
 <body>
   <a class="skip" href="#main">Skip to content</a>
@@ -56,25 +56,26 @@
 
           <div class="quiz-step" data-step="1">
             <h2>Who are we looking after today?</h2>
-            <p>The basics first. Rosie will explain the rest. This is not a quote.</p>
+            <p>Choose any that apply. Rosie will explain the rest. This is not a quote.</p>
             <div class="quiz-options" role="group" aria-label="Who the cover is for">
               <button class="choice quiz-option" type="button" data-key="who" data-value="Just me"><span class="emoji" aria-hidden="true">🧍</span><span>Just me<small>Solo protection and perks</small></span></button>
               <button class="choice quiz-option" type="button" data-key="who" data-value="Me and my family"><span class="emoji" aria-hidden="true">👨‍👩‍👧</span><span>Me and the family<small>Cover for the household</small></span></button>
               <button class="choice quiz-option" type="button" data-key="who" data-value="Self-employed"><span class="emoji" aria-hidden="true">💼</span><span>Self-employed<small>Protect my livelihood</small></span></button>
               <button class="choice quiz-option" type="button" data-key="who" data-value="My business"><span class="emoji" aria-hidden="true">🏢</span><span>My team or business<small>Healthcare for the people you employ</small></span></button>
             </div>
+            <div class="quiz-nav"><button class="btn quiz-next" type="button" data-for="who" data-next="2" disabled>Continue</button></div>
           </div>
 
           <div class="quiz-step" data-step="2" hidden>
             <h2>What matters most right now?</h2>
-            <p>Choose one. A plan can include more than this, and the detail depends on the level of cover.</p>
+            <p>Choose any that apply. A plan can include more than one of these, and the detail depends on the level of cover.</p>
             <div class="quiz-options" role="group" aria-label="Top priority">
               <button class="choice quiz-option" type="button" data-key="priority" data-value="Faster specialist access"><span class="emoji" aria-hidden="true">🏎️</span><span>Skipping waiting lists<small>Faster access to a specialist</small></span></button>
               <button class="choice quiz-option" type="button" data-key="priority" data-value="Active rewards"><span class="emoji" aria-hidden="true">🏋️</span><span>Active rewards<small>Apple Watch, gym discounts, coffee and more</small></span></button>
               <button class="choice quiz-option" type="button" data-key="priority" data-value="Broad cover and cancer care"><span class="emoji" aria-hidden="true">🛡️</span><span>Peace of mind<small>Broader cover, including cancer care</small></span></button>
               <button class="choice quiz-option" type="button" data-key="priority" data-value="Mental health support"><span class="emoji" aria-hidden="true">🧠</span><span>Mental health support<small>Therapy, counselling and wellbeing tools</small></span></button>
             </div>
-            <div class="quiz-nav"><button class="btn quiz-back" type="button" data-goto="1">Back</button></div>
+            <div class="quiz-nav"><button class="btn quiz-back" type="button" data-goto="1">Back</button><button class="btn quiz-next" type="button" data-for="priority" data-next="3" disabled>Continue</button></div>
           </div>
 
           <div class="quiz-step" data-step="3" hidden>
@@ -125,11 +126,11 @@
                   <input id="quiz-email" name="email" type="email" autocomplete="email" required>
                 </div>
                 <div class="field full">
-                  <span id="quiz-time-label">Best time for a brief chat</span>
+                  <span id="quiz-time-label">Best times for a brief chat. Choose any that suit.</span>
                   <div class="quiz-options" role="group" aria-labelledby="quiz-time-label" style="margin-top:0.4rem">
-                    <label class="choice quiz-option"><input type="radio" name="time" value="Morning, 9am to 12pm" required> <span><span class="emoji" aria-hidden="true">🌅</span> Morning<small>9am to 12pm</small></span></label>
-                    <label class="choice quiz-option"><input type="radio" name="time" value="Lunch, 12pm to 2pm"> <span><span class="emoji" aria-hidden="true">☀️</span> Lunch break<small>12pm to 2pm</small></span></label>
-                    <label class="choice quiz-option"><input type="radio" name="time" value="Late afternoon, 2pm to 5pm"> <span><span class="emoji" aria-hidden="true">🌆</span> Late afternoon<small>2pm to 5pm</small></span></label>
+                    <label class="choice quiz-option"><input type="checkbox" name="time" value="Morning, 9am to 12pm"> <span><span class="emoji" aria-hidden="true">🌅</span> Morning<small>9am to 12pm</small></span></label>
+                    <label class="choice quiz-option"><input type="checkbox" name="time" value="Lunch, 12pm to 2pm"> <span><span class="emoji" aria-hidden="true">☀️</span> Lunch break<small>12pm to 2pm</small></span></label>
+                    <label class="choice quiz-option"><input type="checkbox" name="time" value="Late afternoon, 2pm to 5pm"> <span><span class="emoji" aria-hidden="true">🌆</span> Late afternoon<small>2pm to 5pm</small></span></label>
                   </div>
                 </div>
                 <div class="field full">
@@ -190,7 +191,7 @@
       </div>
     </div>
   </footer>
-  <script src="js/main.js?v=5"></script>
+  <script src="js/main.js?v=7"></script>
   <script>document.getElementById("year").textContent = new Date().getFullYear();</script>
 </body>
 </html>

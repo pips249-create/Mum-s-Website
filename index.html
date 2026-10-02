@@ -46,6 +46,14 @@
         "mainEntity": [
           {
             "@type": "Question",
+            "name": "What is health insurance?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Health insurance, also called private medical insurance, is a plan you renew each year. It helps pay for private treatment, such as a specialist, a test or scan, or care in a private hospital, depending on the cover. It does not replace the NHS, and it does not cover everything. Vitality provides the insurance. Rosie explains what a plan does and doesn't cover before you decide."
+            }
+          },
+          {
+            "@type": "Question",
             "name": "Who provides the health insurance?",
             "acceptedAnswer": {
               "@type": "Answer",
@@ -93,7 +101,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,620&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/styles.css?v=20">
+  <link rel="stylesheet" href="css/styles.css?v=21">
 </head>
 <body>
   <a class="skip" href="#main">Skip to content</a>
@@ -222,25 +230,26 @@
 
           <div class="quiz-step" data-step="1">
             <h2>Who are we looking after today?</h2>
-            <p>The basics first. Rosie will explain the rest. This is not a quote.</p>
+            <p>Choose any that apply. Rosie will explain the rest. This is not a quote.</p>
             <div class="quiz-options" role="group" aria-label="Who the cover is for">
               <button class="choice quiz-option" type="button" data-key="who" data-value="Just me"><span class="emoji" aria-hidden="true">🧍</span><span>Just me<small>Solo protection and perks</small></span></button>
               <button class="choice quiz-option" type="button" data-key="who" data-value="Me and my family"><span class="emoji" aria-hidden="true">👨‍👩‍👧</span><span>Me and the family<small>Cover for the household</small></span></button>
               <button class="choice quiz-option" type="button" data-key="who" data-value="Self-employed"><span class="emoji" aria-hidden="true">💼</span><span>Self-employed<small>Protect my livelihood</small></span></button>
               <button class="choice quiz-option" type="button" data-key="who" data-value="My business"><span class="emoji" aria-hidden="true">🏢</span><span>My team or business<small>Healthcare for the people you employ</small></span></button>
             </div>
+            <div class="quiz-nav"><button class="btn quiz-next" type="button" data-for="who" data-next="2" disabled>Continue</button></div>
           </div>
 
           <div class="quiz-step" data-step="2" hidden>
             <h2>What matters most right now?</h2>
-            <p>Choose one. A plan can include more than this, and the detail depends on the level of cover.</p>
+            <p>Choose any that apply. A plan can include more than one of these, and the detail depends on the level of cover.</p>
             <div class="quiz-options" role="group" aria-label="Top priority">
               <button class="choice quiz-option" type="button" data-key="priority" data-value="Faster specialist access"><span class="emoji" aria-hidden="true">🏎️</span><span>Skipping waiting lists<small>Faster access to a specialist</small></span></button>
               <button class="choice quiz-option" type="button" data-key="priority" data-value="Active rewards"><span class="emoji" aria-hidden="true">🏋️</span><span>Active rewards<small>Apple Watch, gym discounts, coffee and more</small></span></button>
               <button class="choice quiz-option" type="button" data-key="priority" data-value="Broad cover and cancer care"><span class="emoji" aria-hidden="true">🛡️</span><span>Peace of mind<small>Broader cover, including cancer care</small></span></button>
               <button class="choice quiz-option" type="button" data-key="priority" data-value="Mental health support"><span class="emoji" aria-hidden="true">🧠</span><span>Mental health support<small>Therapy, counselling and wellbeing tools</small></span></button>
             </div>
-            <div class="quiz-nav"><button class="btn quiz-back" type="button" data-goto="1">Back</button></div>
+            <div class="quiz-nav"><button class="btn quiz-back" type="button" data-goto="1">Back</button><button class="btn quiz-next" type="button" data-for="priority" data-next="3" disabled>Continue</button></div>
           </div>
 
           <div class="quiz-step" data-step="3" hidden>
@@ -291,11 +300,11 @@
                   <input id="quiz-email" name="email" type="email" autocomplete="email" required>
                 </div>
                 <div class="field full">
-                  <span id="quiz-time-label">Best time for a brief chat</span>
+                  <span id="quiz-time-label">Best times for a brief chat. Choose any that suit.</span>
                   <div class="quiz-options" role="group" aria-labelledby="quiz-time-label" style="margin-top:0.4rem">
-                    <label class="choice quiz-option"><input type="radio" name="time" value="Morning, 9am to 12pm" required> <span><span class="emoji" aria-hidden="true">🌅</span> Morning<small>9am to 12pm</small></span></label>
-                    <label class="choice quiz-option"><input type="radio" name="time" value="Lunch, 12pm to 2pm"> <span><span class="emoji" aria-hidden="true">☀️</span> Lunch break<small>12pm to 2pm</small></span></label>
-                    <label class="choice quiz-option"><input type="radio" name="time" value="Late afternoon, 2pm to 5pm"> <span><span class="emoji" aria-hidden="true">🌆</span> Late afternoon<small>2pm to 5pm</small></span></label>
+                    <label class="choice quiz-option"><input type="checkbox" name="time" value="Morning, 9am to 12pm"> <span><span class="emoji" aria-hidden="true">🌅</span> Morning<small>9am to 12pm</small></span></label>
+                    <label class="choice quiz-option"><input type="checkbox" name="time" value="Lunch, 12pm to 2pm"> <span><span class="emoji" aria-hidden="true">☀️</span> Lunch break<small>12pm to 2pm</small></span></label>
+                    <label class="choice quiz-option"><input type="checkbox" name="time" value="Late afternoon, 2pm to 5pm"> <span><span class="emoji" aria-hidden="true">🌆</span> Late afternoon<small>2pm to 5pm</small></span></label>
                   </div>
                 </div>
                 <div class="field full">
@@ -330,18 +339,40 @@
       </div>
     </section>
 
-    <section class="section" id="steps">
+    <section class="section" id="insurance">
+      <div class="wrap split">
+        <div>
+          <p class="kicker">Health insurance</p>
+          <h2>What health insurance actually is.</h2>
+          <p>Health insurance, also called private medical insurance, is a plan you renew each year. It helps pay for private treatment. That can mean seeing a specialist, having a test or scan, or being treated in a private hospital, rather than waiting on the NHS.</p>
+          <p>It does not replace the NHS. It does not cover every illness or every treatment. What you receive depends on the plan, any excess you choose, and any exclusions that apply.</p>
+          <p>A plan can be for you, your family, your business, or a mix of those. Vitality provides the insurance. Rosie explains what a plan does and doesn’t cover before you decide. A quote is completely no obligation.</p>
+          <p><a href="cover.html">Read how cover works</a></p>
+        </div>
+        <article class="panel">
+          <h3>The short version</h3>
+          <ul class="list">
+            <li>You pay for a plan. Vitality is the insurer.</li>
+            <li>The plan helps with the cost of private care. What is included depends on the cover.</li>
+            <li>It can include a GP appointment, physiotherapy, hospital treatment and cancer cover. Not every plan includes all of these.</li>
+            <li>Rosie explains the difference, in plain language, before you decide.</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="steps" style="padding-top:0">
       <div class="wrap">
         <div class="section-head">
           <p class="kicker">How it works</p>
-          <h2>A conversation, a quote, and someone who stays.</h2>
+          <h2>A conversation, a quote, and someone who is here to help you.</h2>
         </div>
         <div class="steps">
           <article class="panel"><p class="step-num">1</p><strong>A proper chat</strong><span class="muted">Thirty minutes with Rosie. No script, no call centre, and no obligation.</span></article>
-          <article class="panel"><p class="step-num">2</p><strong>A plan that fits</strong><span class="muted">She explains the options for you, your family or your business, and what a plan does not cover.</span></article>
-          <article class="panel"><p class="step-num">3</p><strong>Rosie stays with you</strong><span class="muted">After a plan starts, she helps with a claim, or when you just want advice.</span></article>
+          <article class="panel"><p class="step-num">2</p><strong>A plan that fits</strong><span class="muted">She explains the options for you, your family or your business. She explains what a plan does and doesn’t cover.</span></article>
+          <article class="panel"><p class="step-num">3</p><strong>One point of contact</strong><span class="muted">After a plan starts, she helps every step of the way.</span></article>
         </div>
-        <p class="note">Cover can include a GP appointment, a faster specialist referral, hospital treatment and cancer cover, depending on the plan. Vitality’s terms say that when a Vitality GP or in-network physiotherapist refers you to a specialist for diagnosis, you pay £100 per referral. Benefits are subject to any excess that may have been chosen and any exclusions that may apply. <a href="cover.html">Read how cover works</a>.</p>
+        <p class="note">Cover can include a GP appointment, a faster specialist referral, hospital treatment and cancer cover, depending on the plan. Benefits are subject to any excess that may have been chosen and any exclusions that may apply. <a href="cover.html">Read how cover works</a>.</p>
       </div>
     </section>
 
@@ -379,7 +410,7 @@
           <div>
             <p class="kicker">About Rosie</p>
             <h2>I am not a call centre.</h2>
-            <p>Rosie explains the plan in plain language, then stays with you if you need to claim or just want advice.</p>
+            <p>Rosie explains the plan in plain language, and is here to help you if you need to claim or just want advice.</p>
             <a href="about.html">Read Rosie’s story</a>
           </div>
         </div>
@@ -393,6 +424,10 @@
           <h2>Questions people ask first.</h2>
         </div>
         <div class="faq">
+          <article>
+            <h3>What is health insurance?</h3>
+            <p>Health insurance, also called private medical insurance, is a plan you renew each year. It helps pay for private treatment, such as a specialist, a test or scan, or care in a private hospital, depending on the cover. It does not replace the NHS, and it does not cover everything. Vitality provides the insurance. Rosie explains what a plan does and doesn’t cover before you decide.</p>
+          </article>
           <article>
             <h3>Who provides the health insurance?</h3>
             <p>Vitality provides the health insurance. My Medical Cover Ltd introduces and advises. My Medical Cover is not the insurer.</p>
@@ -468,7 +503,7 @@
       </div>
     </div>
   </footer>
-  <script src="js/main.js?v=6"></script>
+  <script src="js/main.js?v=7"></script>
   <script>document.getElementById("year").textContent = new Date().getFullYear();</script>
 </body>
 </html>
