@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>£100 Amazon voucher | My Medical Cover</title>
+  <meta name="description" content="People referred by The Networker UK can ask Rosie McGilvray about a £100 Amazon.co.uk gift voucher after a Vitality plan starts through My Medical Cover.">
+  <link rel="icon" href="assets/logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,620&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css?v=13">
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <div class="topbar">
+    <div class="topbar-inner">
+      <span><a href="tel:07814103774">07814 103774</a> · <a href="tel:01765357257">01765 357257</a></span>
+      <a href="mailto:Rosie.mcgilvray@va.vitality.co.uk">Rosie.mcgilvray@va.vitality.co.uk</a>
+    </div>
+  </div>
+  <header class="nav">
+    <div class="nav-inner">
+      <a class="logo" href="index.html" aria-label="My Medical Cover home"><img src="assets/logo.png" alt="My Medical Cover"></a>
+      <button class="menu-btn" type="button" aria-expanded="false" aria-controls="nav-links">Menu</button>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="index.html#steps">How it works</a></li>
+        <li><a href="quiz.html">Match</a></li>
+        <li><a href="rewards.html">Rewards</a></li>
+        <li><a href="cover.html">Cover</a></li>
+        <li><a href="about.html">About Rosie</a></li>
+        <li><a href="refer.html">£100 voucher</a></li>
+        <li><a href="index.html#contact">Contact</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="section refer" id="refer">
+      <div class="wrap refer-grid">
+        <div>
+          <p class="kicker">£100 voucher</p>
+          <h1>An Amazon gift voucher, when this introduction leads to a plan.</h1>
+          <p>This form is for people referred by <a href="https://www.thenetworkeruk.com"><strong>The Networker UK</strong></a>. The terms below apply.</p>
+          <h2 class="terms-title">Voucher terms</h2>
+          <ol class="terms">
+            <li>The offer is made by My Medical Cover Ltd to a person introduced by <a href="https://www.thenetworkeruk.com">The Networker UK</a>.</li>
+            <li>It is a £100 Amazon.co.uk gift voucher. Amazon is not a sponsor of this offer, and is not affiliated with My Medical Cover or Vitality.</li>
+            <li>One voucher per household.</li>
+            <li>The voucher is sent after a Vitality health insurance plan has been taken out through My Medical Cover and the policy has started.</li>
+            <li>The voucher does not change your premium, your cover, or Vitality’s policy terms. Choose a plan because it meets your needs, not because of the voucher.</li>
+            <li>My Medical Cover may ask for reasonable confirmation that <a href="https://www.thenetworkeruk.com">The Networker UK</a> made the introduction.</li>
+            <li>The offer applies to this referral route. It can be withdrawn for future enquiries. A referral already accepted under these terms will still be honoured.</li>
+          </ol>
+          <p class="note">This voucher is not provided by Vitality. It is not a recommendation to buy insurance.</p>
+        </div>
+        <div>
+          <form id="referral-form" novalidate>
+            <div class="fields">
+              <div class="field">
+                <label for="name">Your name</label>
+                <input id="name" name="name" autocomplete="name" required>
+              </div>
+              <div class="field">
+                <label for="email">Email</label>
+                <input id="email" name="email" type="email" autocomplete="email" required>
+              </div>
+              <div class="field">
+                <label for="phone">Phone</label>
+                <input id="phone" name="phone" type="tel" autocomplete="tel" required>
+              </div>
+              <div class="field">
+                <label for="cover">Cover for</label>
+                <select id="cover" name="cover">
+                  <option>Just me</option>
+                  <option>Me and my family</option>
+                  <option>I’m self-employed</option>
+                  <option>My business</option>
+                  <option>Not sure yet</option>
+                </select>
+              </div>
+              <div class="field">
+                <label for="insured">Do you already have health insurance?</label>
+                <select id="insured" name="insured">
+                  <option>No</option>
+                  <option>Yes — I’d like it reviewed</option>
+                </select>
+              </div>
+              <div class="field">
+                <label for="time">Best time for Rosie to call</label>
+                <input id="time" name="time" placeholder="For example, weekday mornings">
+              </div>
+              <div class="field full">
+                <label for="referred-by">Referred by</label>
+                <input id="referred-by" name="referred_by" value="The Networker UK" readonly>
+              </div>
+              <div class="field full">
+                <label for="message">Anything Rosie should know</label>
+                <textarea id="message" name="message" placeholder="Who the cover is for, or questions you already have."></textarea>
+              </div>
+              <div class="field full">
+                <label class="check" for="voucher-confirm">
+                  <input id="voucher-confirm" name="voucher_confirm" type="checkbox" value="Yes — referred by The Networker UK">
+                  <span>I was referred by The Networker UK and I have read the £100 voucher terms.</span>
+                </label>
+              </div>
+              <div class="field full">
+                <label class="check" for="consent">
+                  <input id="consent" name="consent" type="checkbox" value="Agreed to be contacted">
+                  <span>I agree to My Medical Cover contacting me about this enquiry. I have read the <a href="privacy.html">privacy policy</a>.</span>
+                </label>
+              </div>
+            </div>
+            <div class="hp" aria-hidden="true">
+              <label for="website">Website</label>
+              <input id="website" name="website" tabindex="-1" autocomplete="off">
+            </div>
+            <input type="hidden" name="_subject" value="New referral enquiry — The Networker UK">
+            <input type="hidden" name="_template" value="table">
+            <input type="hidden" name="_captcha" value="false">
+            <p class="error" role="alert"></p>
+            <button class="btn btn-primary" type="submit">Send my referral</button>
+            <p class="fca-note">My Medical Cover Limited is authorised and regulated by the Financial Conduct Authority.</p>
+            <a class="fallback" hidden href="mailto:Rosie.mcgilvray@va.vitality.co.uk">Email Rosie instead</a>
+          </form>
+          <div id="referral-success" class="success" hidden tabindex="-1">
+            <h3>Thank you. Rosie has your referral.</h3>
+            <p>Your enquiry is marked as an introduction from The Networker UK. Rosie will be in touch to arrange a no-obligation conversation. The £100 Amazon voucher is sent only if you go on to take out a plan, under the terms on this page.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <div class="footer-grid">
+        <div>
+          <a href="index.html">Back to My Medical Cover</a>
+          <ul class="footer-links">
+            <li><a href="privacy.html">Privacy policy</a></li>
+            <li><a href="https://www.thenetworkeruk.com">The Networker UK</a></li>
+          </ul>
+        </div>
+        <p>© <span id="year">2026</span> My Medical Cover Ltd.</p>
+      </div>
+      <div class="legal">
+        <p class="partner partner-on-dark"><span class="vitality-mark">Vitality</span><span>provides the health insurance</span></p>
+        <p>My Medical Cover Limited is authorised and regulated by the Financial Conduct Authority.</p>
+        <p>My Medical Cover Ltd. Company number 13256641. Registered office: 23 Victoria Avenue, C/O T P Jones &amp; Co LLP, Harrogate, North Yorkshire, HG1 5RD.</p>
+        <p>Health insurance is provided by Vitality, not by My Medical Cover Ltd. This voucher is offered by My Medical Cover Ltd, not by Vitality. It is not a recommendation to buy insurance.</p>
+      </div>
+    </div>
+  </footer>
+  <script src="js/main.js?v=3"></script>
+  <script>document.getElementById("year").textContent = new Date().getFullYear();</script>
+</body>
+</html>

@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,620&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/styles.css?v=8">
+  <link rel="stylesheet" href="css/styles.css?v=13">
 </head>
 <body>
   <a class="skip" href="#main">Skip to content</a>
@@ -25,10 +25,11 @@
       <button class="menu-btn" type="button" aria-expanded="false" aria-controls="nav-links">Menu</button>
       <ul class="nav-links" id="nav-links">
         <li><a href="#steps">How it works</a></li>
-        <li><a href="#rewards">Rewards</a></li>
+        <li><a href="quiz.html">Match</a></li>
+        <li><a href="rewards.html">Rewards</a></li>
         <li><a href="cover.html">Cover</a></li>
-        <li><a href="#about">About Rosie</a></li>
-        <li><a href="#refer">£100 voucher</a></li>
+        <li><a href="about.html">About Rosie</a></li>
+        <li><a href="refer.html">£100 voucher</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
     </div>
@@ -38,21 +39,60 @@
     <section class="hero">
       <div class="wrap hero-grid">
         <div>
-          <p class="kicker">Vitality health insurance · Personal advice</p>
+          <p class="partner"><span class="vitality-mark">Vitality</span><span>provides the health insurance</span></p>
+          <p class="kicker">Personal advice</p>
           <h1>How important is your health to you?</h1>
           <p class="lede">In the UK, we’ve always been able to rely upon the NHS, but sadly this is no longer the case. It is time to think about healthcare differently. Rosie McGilvray takes the time to explain private health insurance clearly, for you, your family or your business.</p>
+          <blockquote class="pull-quote">
+            <p>“Rosie took extreme care to walk me through every scenario and option until we found exactly what I needed and ensured it was within my budget.”</p>
+            <footer>Jackie, client</footer>
+          </blockquote>
           <div class="hero-actions">
             <a class="btn btn-primary" href="https://outlook.office365.com/owa/calendar/DiscussionwithRosie@VitalityCloud.onmicrosoft.com/bookings/">Book a 30-minute chat</a>
-            <a class="btn btn-ghost" href="#refer">I was referred by The Networker UK</a>
+            <a class="btn btn-ghost" href="quiz.html">Match cover and rewards</a>
           </div>
+          <p class="fca-note">My Medical Cover Limited is authorised and regulated by the Financial Conduct Authority.</p>
         </div>
         <aside class="voucher-card" aria-label="Referral voucher">
           <span class="referrer">Referred by <a href="https://www.thenetworkeruk.com">The Networker UK</a></span>
           <p class="amount"><span>£</span>100</p>
           <h2 style="font-size:1.7rem;color:white;margin-top:0.4rem">Amazon gift voucher</h2>
-          <p>If <a href="https://www.thenetworkeruk.com">The Networker UK</a> referred you, tell Rosie here. When you take out a Vitality plan through My Medical Cover, you receive a £100 Amazon.co.uk gift voucher.</p>
-          <a class="btn btn-light" href="#refer">Open the referral form</a>
+          <p>Tell Rosie using the form. When you take out a Vitality plan through My Medical Cover, you receive a £100 Amazon.co.uk gift voucher.</p>
+          <a class="btn btn-light" href="refer.html">Open the referral form</a>
+          <blockquote class="voucher-quote">
+            <p>“It was so nice to be able to deal with a real person and not just someone reading from a script.”</p>
+            <footer>Steven, client</footer>
+          </blockquote>
         </aside>
+      </div>
+    </section>
+
+    <section class="perk-band" id="rewards">
+      <div class="wrap">
+        <div class="section-head">
+          <p class="kicker">Vitality rewards</p>
+          <h2>Everyday perks, with a qualifying plan.</h2>
+          <p>These are examples from Vitality’s own rewards list. The offers depend on the plan and can change.</p>
+        </div>
+        <div class="perk-row">
+          <a class="perk" href="rewards.html">
+            <img src="assets/rewards/watch.jpg" alt="A wrist wearing a smartwatch" width="1200" height="900">
+            <span><strong>Apple Watch</strong><small>With qualifying health and life plans</small></span>
+          </a>
+          <a class="perk" href="rewards.html">
+            <img src="assets/rewards/coffee.jpg" alt="A cup of coffee on a marble table" width="1200" height="900">
+            <span><strong>Caffè Nero</strong><small>A weekly drink reward for getting moving</small></span>
+          </a>
+          <a class="perk" href="rewards.html">
+            <img src="assets/rewards/run.jpg" alt="A runner on a tree-lined park path" width="1200" height="900">
+            <span><strong>Gym membership</strong><small>Discounted at selected gyms. A joining fee may apply</small></span>
+          </a>
+          <a class="perk" href="rewards.html">
+            <img src="assets/rewards/spa.jpg" alt="Folded white towels with a pale flower" width="1200" height="900">
+            <span><strong>Champneys</strong><small>Money off spa days and short stays</small></span>
+          </a>
+        </div>
+        <p class="note">Rewards are provided by Vitality and its partners, not by My Medical Cover. <a href="rewards.html">See the rewards and the conditions</a>.</p>
       </div>
     </section>
 
@@ -65,10 +105,22 @@
             <p>Choose one. Rosie will explain the rest on the call. This is not a quote.</p>
           </div>
           <div class="choices" role="group" aria-label="Who the cover is for">
-            <button class="choice" type="button" data-choice="personal" aria-pressed="false">Personal</button>
-            <button class="choice" type="button" data-choice="family" aria-pressed="false">Family</button>
-            <button class="choice" type="button" data-choice="self" aria-pressed="false">Self-employed</button>
-            <button class="choice" type="button" data-choice="business" aria-pressed="false">Business</button>
+            <button class="choice" type="button" data-choice="personal" aria-pressed="false">
+              <svg class="choice-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="3.2"/><path d="M5.2 19.2c1.3-3.1 3.6-4.6 6.8-4.6s5.5 1.5 6.8 4.6"/></svg>
+              <span>Personal</span>
+            </button>
+            <button class="choice" type="button" data-choice="family" aria-pressed="false">
+              <svg class="choice-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="8.5" cy="8.2" r="2.7"/><circle cx="16" cy="9.2" r="2.1"/><path d="M3.6 19c1-2.8 2.9-4.2 5.2-4.2 1.8 0 3.4.9 4.4 2.6"/><path d="M12.6 16.2c.8-1.5 2.2-2.3 3.8-2.1 1.7.2 3 1.2 3.8 3.4"/></svg>
+              <span>Family</span>
+            </button>
+            <button class="choice" type="button" data-choice="self" aria-pressed="false">
+              <svg class="choice-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="5.5" width="16" height="11" rx="1.6"/><path d="M2.5 18.8h19"/></svg>
+              <span>Self-employed</span>
+            </button>
+            <button class="choice" type="button" data-choice="business" aria-pressed="false">
+              <svg class="choice-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4.5 20V9.2L12 4.5l7.5 4.7V20"/><path d="M9.5 20v-5h5v5"/><path d="M9 11.2h1.6M13.4 11.2H15M9 14.2h1.6M13.4 14.2H15"/></svg>
+              <span>Business</span>
+            </button>
           </div>
           <div class="panel choice-result" id="choice-result" hidden>
             <h3 id="choice-title"></h3>
@@ -81,8 +133,9 @@
             <p id="choice-next" hidden></p>
             <div class="hero-actions">
               <a class="btn btn-primary" href="https://outlook.office365.com/owa/calendar/DiscussionwithRosie@VitalityCloud.onmicrosoft.com/bookings/">Book a 30-minute chat</a>
-              <a class="btn btn-ghost" href="#refer">I was referred by The Networker UK</a>
+              <a class="btn btn-ghost" href="quiz.html">Try the 1-minute match</a>
             </div>
+            <p class="fca-note">My Medical Cover Limited is authorised and regulated by the Financial Conduct Authority.</p>
           </div>
         </div>
       </div>
@@ -103,55 +156,6 @@
       </div>
     </section>
 
-    <section class="section" id="rewards" style="padding-top:0">
-      <div class="wrap">
-        <div class="section-head">
-          <p class="kicker">Vitality rewards</p>
-          <h2>Look after yourself, and the plan gives something back.</h2>
-          <p>Vitality encourages members to stay active, then offers rewards with its partners. These examples are taken from Vitality’s own rewards list. Qualifying plans and terms apply, and the offers can change.</p>
-        </div>
-        <div class="rewards">
-          <article class="panel reward">
-            <img src="assets/rewards/watch.jpg" alt="A wrist wearing a smartwatch" width="1200" height="900">
-            <div><strong>Apple Watch</strong><span class="muted">Get active. Get rewarded with Apple Watch. Available with qualifying health and life insurance plans.</span></div>
-          </article>
-          <article class="panel reward">
-            <img src="assets/rewards/coffee.jpg" alt="A cup of coffee on a marble table" width="1200" height="900">
-            <div><strong>Caffè Nero</strong><span class="muted">Get moving to pick a weekly drink reward.</span></div>
-          </article>
-          <article class="panel reward">
-            <img src="assets/rewards/groceries.jpg" alt="A paper bag of fresh fruit and vegetables" width="1200" height="900">
-            <div><strong>Waitrose &amp; Partners</strong><span class="muted">Get active to earn up to 25% cashback on Good Health food. Qualifying plans, and a monthly spend cap will apply.</span></div>
-          </article>
-          <article class="panel reward">
-            <img src="assets/rewards/spa.jpg" alt="Folded white towels with a pale flower" width="1200" height="900">
-            <div><strong>Champneys</strong><span class="muted">Get 75% off one, two and three night spa stays and spa days.</span></div>
-          </article>
-          <article class="panel reward">
-            <img src="assets/rewards/calm.jpg" alt="Someone sitting quietly by a bright window" width="1200" height="900">
-            <div><strong>Headspace</strong><span class="muted">Tap into your inner peace with guided meditation and much more.</span></div>
-          </article>
-          <article class="panel reward">
-            <img src="assets/rewards/run.jpg" alt="A runner on a tree-lined park path" width="1200" height="900">
-            <div><strong>parkrun</strong><span class="muted">Earn Vitality points every time you run or volunteer.</span></div>
-          </article>
-          <article class="panel reward">
-            <img src="assets/rewards/folding-bike.jpg" alt="A compact folding bicycle against a pale wall" width="1200" height="900">
-            <div><strong>Brompton</strong><span class="muted">Save £250 on a Brompton bike.</span></div>
-          </article>
-          <article class="panel reward">
-            <img src="assets/rewards/bike.jpg" alt="A road bicycle on a quiet country lane" width="1200" height="900">
-            <div><strong>Trek</strong><span class="muted">Save up to 20% on a bike and accessories.</span></div>
-          </article>
-          <article class="panel reward">
-            <img src="assets/rewards/tracker.jpg" alt="A fitness wristband beside a pair of running shoes" width="1200" height="900">
-            <div><strong>Fitbit and Garmin</strong><span class="muted">Get up to 30% off a range of Fitbit devices, and up to 40% off a range of Garmin devices. Postage and packaging applies.</span></div>
-          </article>
-        </div>
-        <p class="note">Rewards are provided by Vitality and its partners, not by My Medical Cover. A joining fee of up to £80 applies to a discounted gym membership. Each adult can have one, at Nuffield Health, PureGym or Virgin Active. Virgin Active Chiswick Riverside and Mayfair are excluded, and only certain gym packages are included. Offers can change. <a href="https://www.vitality.co.uk/rewards/">See Vitality’s current rewards</a>.</p>
-      </div>
-    </section>
-
     <section class="section" id="clients" style="padding-top:0">
       <div class="wrap">
         <div class="section-head">
@@ -160,8 +164,8 @@
         </div>
         <div class="quotes three">
           <blockquote class="quote">
-            <p>“Rosie took extreme care to walk me through every scenario and option until we found exactly what I needed and ensured it was within my budget.”</p>
-            <footer>Jackie</footer>
+            <p>“Rosie made my Vitality experience a breeze. She was warm, professional and answered every question I had. I would recommend her to everyone.”</p>
+            <footer>Mieke</footer>
           </blockquote>
           <blockquote class="quote">
             <p>“Rosie was able to tailor the amount we pay each month to suit our budget to get the cover we needed. That peace of mind is invaluable.”</p>
@@ -175,116 +179,19 @@
         <p style="margin-top:1.2rem"><a href="cover.html#clients">Read more from Rosie’s clients</a></p>
         <div class="hero-actions">
           <a class="btn btn-primary" href="https://outlook.office365.com/owa/calendar/DiscussionwithRosie@VitalityCloud.onmicrosoft.com/bookings/">Book a 30-minute chat</a>
-          <a class="btn btn-ghost" href="#refer">I was referred by The Networker UK</a>
         </div>
       </div>
     </section>
 
-    <section class="section" id="about">
-      <div class="wrap split">
-        <figure class="portrait">
-          <img src="assets/rosie.jpg" width="852" height="1024" alt="Rosie McGilvray, who advises on Vitality health insurance through My Medical Cover">
-        </figure>
-        <div>
-          <p class="kicker">About Rosie</p>
-          <h2>I am not a call centre.</h2>
-          <p>My name is Rosie and I am passionate about helping people. I like to take the time to explain health insurance clearly and can advise on what’s best for your circumstances — whether that is for you as an individual, your family or your business, or all of those.</p>
-          <p>There are no scripts or jargon. Just great customer service. And when you have taken out a plan with me, I go the extra mile to help whenever you need to make a claim, or even if you are just looking for advice. Nothing is too much trouble.</p>
-          <p>I spent many years running a publishing company. In 2020 a member of my family was in too much pain to keep waiting, paid privately for a knee replacement, and was treated within two weeks. That is why I chose this work, and why I work exclusively with Vitality Health: a full cover promise for approved treatment, and rewards for looking after yourself.</p>
-          <p class="muted">I am a mother of two grown-up children. I live near the Yorkshire Dales, and I still make time to walk.</p>
-        </div>
-      </div>
-    </section>
-
-    <section class="section refer" id="refer">
-      <div class="wrap refer-grid">
-        <div>
-          <p class="kicker">The Networker UK referral</p>
-          <h2>A £100 Amazon gift voucher for introductions from The Networker UK.</h2>
-          <p>This form is for people referred by <a href="https://www.thenetworkeruk.com"><strong>The Networker UK</strong></a>. Rosie will know the enquiry came through The Networker UK, and the voucher terms below apply.</p>
-          <h3>Voucher terms</h3>
-          <ol class="terms">
-            <li>The offer is made by My Medical Cover Ltd to a person introduced by <a href="https://www.thenetworkeruk.com">The Networker UK</a>.</li>
-            <li>It is a £100 Amazon.co.uk gift voucher. Amazon is not a sponsor of this offer, and is not affiliated with My Medical Cover or Vitality.</li>
-            <li>One voucher per household.</li>
-            <li>The voucher is sent after a Vitality health insurance plan has been taken out through My Medical Cover and the policy has started.</li>
-            <li>The voucher does not change your premium, your cover, or Vitality’s policy terms. Choose a plan because it meets your needs, not because of the voucher.</li>
-            <li>My Medical Cover may ask for reasonable confirmation that <a href="https://www.thenetworkeruk.com">The Networker UK</a> made the introduction.</li>
-            <li>The offer applies to this referral route. It can be withdrawn for future enquiries. A referral already accepted under these terms will still be honoured.</li>
-          </ol>
-          <p class="note">This voucher is not provided by Vitality. It is not a recommendation to buy insurance.</p>
-        </div>
-        <div>
-          <form id="referral-form" novalidate>
-            <div class="fields">
-              <div class="field">
-                <label for="name">Your name</label>
-                <input id="name" name="name" autocomplete="name" required>
-              </div>
-              <div class="field">
-                <label for="email">Email</label>
-                <input id="email" name="email" type="email" autocomplete="email" required>
-              </div>
-              <div class="field">
-                <label for="phone">Phone</label>
-                <input id="phone" name="phone" type="tel" autocomplete="tel" required>
-              </div>
-              <div class="field">
-                <label for="cover">Cover for</label>
-                <select id="cover" name="cover">
-                  <option>Just me</option>
-                  <option>Me and my family</option>
-                  <option>I’m self-employed</option>
-                  <option>My business</option>
-                  <option>Not sure yet</option>
-                </select>
-              </div>
-              <div class="field">
-                <label for="insured">Do you already have health insurance?</label>
-                <select id="insured" name="insured">
-                  <option>No</option>
-                  <option>Yes — I’d like it reviewed</option>
-                </select>
-              </div>
-              <div class="field">
-                <label for="time">Best time for Rosie to call</label>
-                <input id="time" name="time" placeholder="For example, weekday mornings">
-              </div>
-              <div class="field full">
-                <label for="referred-by">Referred by</label>
-                <input id="referred-by" name="referred_by" value="The Networker UK" readonly>
-              </div>
-              <div class="field full">
-                <label for="message">Anything Rosie should know</label>
-                <textarea id="message" name="message" placeholder="Who the cover is for, or questions you already have."></textarea>
-              </div>
-              <div class="field full">
-                <label class="check" for="voucher-confirm">
-                  <input id="voucher-confirm" name="voucher_confirm" type="checkbox" value="Yes — referred by The Networker UK">
-                  <span>I was referred by The Networker UK and I have read the £100 voucher terms.</span>
-                </label>
-              </div>
-              <div class="field full">
-                <label class="check" for="consent">
-                  <input id="consent" name="consent" type="checkbox" value="Agreed to be contacted">
-                  <span>I agree to My Medical Cover contacting me about this enquiry. I have read the <a href="privacy.html">privacy policy</a>.</span>
-                </label>
-              </div>
-            </div>
-            <div class="hp" aria-hidden="true">
-              <label for="website">Website</label>
-              <input id="website" name="website" tabindex="-1" autocomplete="off">
-            </div>
-            <input type="hidden" name="_subject" value="New referral enquiry — The Networker UK">
-            <input type="hidden" name="_template" value="table">
-            <input type="hidden" name="_captcha" value="false">
-            <p class="error" role="alert"></p>
-            <button class="btn btn-primary" type="submit">Send my referral</button>
-            <a class="fallback" hidden href="mailto:Rosie.mcgilvray@va.vitality.co.uk">Email Rosie instead</a>
-          </form>
-          <div id="referral-success" class="success" hidden tabindex="-1">
-            <h3>Thank you. Rosie has your referral.</h3>
-            <p>Your enquiry is marked as an introduction from The Networker UK. Rosie will be in touch to arrange a no-obligation conversation. The £100 Amazon voucher is sent only if you go on to take out a plan, under the terms on this page.</p>
+    <section class="section" id="about" style="padding-top:0">
+      <div class="wrap">
+        <div class="about-tease">
+          <img src="assets/rosie.jpg" width="852" height="1024" alt="Rosie McGilvray">
+          <div>
+            <p class="kicker">About Rosie</p>
+            <h2>I am not a call centre.</h2>
+            <p>Rosie explains the plan in plain language, then stays with you if you need to claim or just want advice.</p>
+            <a href="about.html">Read Rosie’s story</a>
           </div>
         </div>
       </div>
@@ -301,6 +208,7 @@
             <a class="btn btn-primary" href="https://outlook.office365.com/owa/calendar/DiscussionwithRosie@VitalityCloud.onmicrosoft.com/bookings/">Book a call</a>
             <a class="btn btn-ghost" href="tel:07814103774">Call 07814 103774</a>
           </div>
+          <p class="fca-note">My Medical Cover Limited is authorised and regulated by the Financial Conduct Authority.</p>
         </div>
         <aside class="contact-card">
           <h3 style="color:white">Talk to Rosie</h3>
@@ -327,13 +235,14 @@
         <p>© <span id="year">2026</span> My Medical Cover Ltd.</p>
       </div>
       <div class="legal">
+        <p class="partner partner-on-dark"><span class="vitality-mark">Vitality</span><span>provides the health insurance</span></p>
         <p>My Medical Cover Limited is authorised and regulated by the Financial Conduct Authority.</p>
         <p>My Medical Cover Ltd. Company number 13256641. Registered office: 23 Victoria Avenue, C/O T P Jones &amp; Co LLP, Harrogate, North Yorkshire, HG1 5RD.</p>
         <p>Health insurance is provided by Vitality, not by My Medical Cover Ltd. Cover descriptions on this website are a guide. Benefits are subject to any excess that may have been chosen and any exclusions that may apply. Reward offers are provided by Vitality and its partners, depend on the plan, and can change. Please ask for a quotation and the policy documents before you decide.</p>
       </div>
     </div>
   </footer>
-  <script src="js/main.js"></script>
+  <script src="js/main.js?v=3"></script>
   <script>document.getElementById("year").textContent = new Date().getFullYear();</script>
 </body>
 </html>

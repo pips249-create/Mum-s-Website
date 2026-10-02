@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Cover and rewards match | My Medical Cover</title>
+  <meta name="description" content="A short match to help Rosie McGilvray prepare a conversation about Vitality health insurance and rewards. It is not a quote or a health assessment.">
+  <link rel="icon" href="assets/logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,620&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css?v=13">
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <div class="topbar">
+    <div class="topbar-inner">
+      <span><a href="tel:07814103774">07814 103774</a> · <a href="tel:01765357257">01765 357257</a></span>
+      <a href="mailto:Rosie.mcgilvray@va.vitality.co.uk">Rosie.mcgilvray@va.vitality.co.uk</a>
+    </div>
+  </div>
+  <header class="nav">
+    <div class="nav-inner">
+      <a class="logo" href="index.html" aria-label="My Medical Cover home"><img src="assets/logo.png" alt="My Medical Cover"></a>
+      <button class="menu-btn" type="button" aria-expanded="false" aria-controls="nav-links">Menu</button>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="index.html#steps">How it works</a></li>
+        <li><a href="quiz.html">Match</a></li>
+        <li><a href="rewards.html">Rewards</a></li>
+        <li><a href="cover.html">Cover</a></li>
+        <li><a href="about.html">About Rosie</a></li>
+        <li><a href="refer.html">£100 voucher</a></li>
+        <li><a href="index.html#contact">Contact</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="section start">
+      <div class="wrap">
+        <div class="start-stage" id="quiz">
+          <p class="kicker">Cover and rewards match</p>
+          <p class="quiz-count" id="quiz-count">Step <span id="quiz-step-num">1</span> of 5</p>
+          <div class="quiz-progress" aria-hidden="true"><span id="quiz-bar"></span></div>
+
+          <div class="quiz-step" data-step="1">
+            <h2>Who are we looking after today?</h2>
+            <p>The basics first. Rosie will explain the rest. This is not a quote.</p>
+            <div class="quiz-options" role="group" aria-label="Who the cover is for">
+              <button class="choice quiz-option" type="button" data-key="who" data-value="Just me"><span class="emoji" aria-hidden="true">🧍</span><span>Just me<small>Solo protection and perks</small></span></button>
+              <button class="choice quiz-option" type="button" data-key="who" data-value="Me and my family"><span class="emoji" aria-hidden="true">👨‍👩‍👧</span><span>Me and the family<small>Cover for the household</small></span></button>
+              <button class="choice quiz-option" type="button" data-key="who" data-value="Self-employed"><span class="emoji" aria-hidden="true">💼</span><span>Self-employed<small>Protect my livelihood</small></span></button>
+              <button class="choice quiz-option" type="button" data-key="who" data-value="My business"><span class="emoji" aria-hidden="true">🏢</span><span>My team or business<small>Healthcare for the people you employ</small></span></button>
+            </div>
+          </div>
+
+          <div class="quiz-step" data-step="2" hidden>
+            <h2>What matters most right now?</h2>
+            <p>Choose one. A plan can include more than this, and the detail depends on the level of cover.</p>
+            <div class="quiz-options" role="group" aria-label="Top priority">
+              <button class="choice quiz-option" type="button" data-key="priority" data-value="Faster specialist access"><span class="emoji" aria-hidden="true">🏎️</span><span>Skipping waiting lists<small>Faster access to a specialist</small></span></button>
+              <button class="choice quiz-option" type="button" data-key="priority" data-value="Active rewards"><span class="emoji" aria-hidden="true">🏋️</span><span>Active rewards<small>Apple Watch, gym discounts, coffee and more</small></span></button>
+              <button class="choice quiz-option" type="button" data-key="priority" data-value="Broad cover and cancer care"><span class="emoji" aria-hidden="true">🛡️</span><span>Peace of mind<small>Broader cover, including cancer care</small></span></button>
+              <button class="choice quiz-option" type="button" data-key="priority" data-value="Mental health support"><span class="emoji" aria-hidden="true">🧠</span><span>Mental health support<small>Therapy, counselling and wellbeing tools</small></span></button>
+            </div>
+            <div class="quiz-nav"><button class="btn quiz-back" type="button" data-goto="1">Back</button></div>
+          </div>
+
+          <div class="quiz-step" data-step="3" hidden>
+            <h2>Where are you starting from?</h2>
+            <p>This helps Rosie know which conversation to have.</p>
+            <div class="quiz-options" role="group" aria-label="Current situation">
+              <button class="choice quiz-option" type="button" data-key="situation" data-value="New to private healthcare"><span class="emoji" aria-hidden="true">🆕</span><span>Brand new<small>I have not had private healthcare before</small></span></button>
+              <button class="choice quiz-option" type="button" data-key="situation" data-value="Already covered"><span class="emoji" aria-hidden="true">🔄</span><span>Already covered<small>I want to see if something fits better</small></span></button>
+              <button class="choice quiz-option" type="button" data-key="situation" data-value="Had cover before"><span class="emoji" aria-hidden="true">⏪</span><span>I had cover before<small>I would like to start again</small></span></button>
+            </div>
+            <div class="quiz-nav"><button class="btn quiz-back" type="button" data-goto="2">Back</button></div>
+          </div>
+
+          <div class="quiz-step" data-step="4" hidden>
+            <h2>How active are you in a typical week?</h2>
+            <p>Vitality rewards members for moving. Rosie can explain what that could mean on your plan. Offers can change, and this is not a promise of a saving.</p>
+            <div class="quiz-options" role="group" aria-label="Activity level">
+              <button class="choice quiz-option" type="button" data-key="activity" data-value="Just starting out"><span class="emoji" aria-hidden="true">🛋️</span><span>Just starting out<small>I want a reason to get moving</small></span></button>
+              <button class="choice quiz-option" type="button" data-key="activity" data-value="Lightly active"><span class="emoji" aria-hidden="true">🚶</span><span>Lightly active<small>Daily walks and light movement</small></span></button>
+              <button class="choice quiz-option" type="button" data-key="activity" data-value="Regularly active"><span class="emoji" aria-hidden="true">🏃</span><span>Regularly active<small>Two or three workouts a week</small></span></button>
+              <button class="choice quiz-option" type="button" data-key="activity" data-value="Training most days"><span class="emoji" aria-hidden="true">🚴</span><span>Fitness fanatic<small>Daily training, runs or sport</small></span></button>
+            </div>
+            <div class="quiz-nav"><button class="btn quiz-back" type="button" data-goto="3">Back</button></div>
+          </div>
+
+          <div class="quiz-step" data-step="5" hidden>
+            <h2>Where should Rosie send your match?</h2>
+            <p>Rosie will talk this through herself. There is no call centre. A short call is enough to start, and this is not a quote.</p>
+            <form id="quiz-form" class="quiz-form" novalidate>
+              <input type="hidden" name="who" id="quiz-who">
+              <input type="hidden" name="priority" id="quiz-priority">
+              <input type="hidden" name="situation" id="quiz-situation">
+              <input type="hidden" name="activity" id="quiz-activity">
+              <input type="hidden" name="_subject" value="Cover and rewards match">
+              <input type="hidden" name="_template" value="table">
+              <input type="hidden" name="_captcha" value="false">
+              <div class="fields">
+                <div class="field">
+                  <label for="quiz-name">First name</label>
+                  <input id="quiz-name" name="first_name" autocomplete="given-name" required>
+                </div>
+                <div class="field">
+                  <label for="quiz-phone">Phone number</label>
+                  <input id="quiz-phone" name="phone" type="tel" autocomplete="tel" required>
+                </div>
+                <div class="field full">
+                  <label for="quiz-email">Email address</label>
+                  <input id="quiz-email" name="email" type="email" autocomplete="email" required>
+                </div>
+                <div class="field full">
+                  <span id="quiz-time-label">Best time for a brief chat</span>
+                  <div class="quiz-options" role="group" aria-labelledby="quiz-time-label" style="margin-top:0.4rem">
+                    <label class="choice quiz-option"><input type="radio" name="time" value="Morning, 9am to 12pm" required> <span><span class="emoji" aria-hidden="true">🌅</span> Morning<small>9am to 12pm</small></span></label>
+                    <label class="choice quiz-option"><input type="radio" name="time" value="Lunch, 12pm to 2pm"> <span><span class="emoji" aria-hidden="true">☀️</span> Lunch break<small>12pm to 2pm</small></span></label>
+                    <label class="choice quiz-option"><input type="radio" name="time" value="Late afternoon, 2pm to 5pm"> <span><span class="emoji" aria-hidden="true">🌆</span> Late afternoon<small>2pm to 5pm</small></span></label>
+                  </div>
+                </div>
+                <div class="field full">
+                  <label class="check" for="quiz-consent">
+                    <input id="quiz-consent" name="consent" type="checkbox" value="Agreed to be contacted">
+                    <span>I agree to My Medical Cover contacting me about this match. I have read the <a href="privacy.html">privacy policy</a>.</span>
+                  </label>
+                </div>
+              </div>
+              <div class="hp" aria-hidden="true">
+                <label for="quiz-website">Website</label>
+                <input id="quiz-website" name="website" tabindex="-1" autocomplete="off">
+              </div>
+              <p class="error" role="alert"></p>
+              <div class="quiz-nav">
+                <button class="btn quiz-back" type="button" data-goto="4">Back</button>
+                <button class="btn btn-primary" type="submit">See my match</button>
+              </div>
+              <a class="fallback" hidden href="mailto:Rosie.mcgilvray@va.vitality.co.uk">Email Rosie instead</a>
+            </form>
+          </div>
+
+          <div id="quiz-success" class="panel" hidden tabindex="-1">
+            <h3>Rosie has your match.</h3>
+            <p id="quiz-summary"></p>
+            <div class="hero-actions">
+              <a class="btn btn-primary" href="https://outlook.office365.com/owa/calendar/DiscussionwithRosie@VitalityCloud.onmicrosoft.com/bookings/">Book a 30-minute chat</a>
+            </div>
+            <p class="fca-note">My Medical Cover Limited is authorised and regulated by the Financial Conduct Authority.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <div class="footer-grid">
+        <div>
+          <a href="index.html">Back to My Medical Cover</a>
+          <ul class="footer-links">
+            <li><a href="privacy.html">Privacy policy</a></li>
+            <li><a href="cover.html">How cover works</a></li>
+          </ul>
+        </div>
+        <p>© <span id="year">2026</span> My Medical Cover Ltd.</p>
+      </div>
+      <div class="legal">
+        <p class="partner partner-on-dark"><span class="vitality-mark">Vitality</span><span>provides the health insurance</span></p>
+        <p>My Medical Cover Limited is authorised and regulated by the Financial Conduct Authority.</p>
+        <p>My Medical Cover Ltd. Company number 13256641. Registered office: 23 Victoria Avenue, C/O T P Jones &amp; Co LLP, Harrogate, North Yorkshire, HG1 5RD.</p>
+        <p>Health insurance is provided by Vitality, not by My Medical Cover Ltd. This match is not a quote, a health assessment, or a recommendation to buy a particular plan. Benefits are subject to any excess that may have been chosen and any exclusions that may apply. Reward offers depend on the plan and can change.</p>
+      </div>
+    </div>
+  </footer>
+  <script src="js/main.js?v=3"></script>
+  <script>document.getElementById("year").textContent = new Date().getFullYear();</script>
+</body>
+</html>
