@@ -50,7 +50,7 @@ if (form) {
     if (name.length < 2) return showError("Please add your name.");
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return showError("Please add a valid email address.");
     if (phone.replace(/\D/g, "").length < 10) return showError("Please add a phone number Rosie can call.");
-    if (!voucher) return showError("Please confirm you were referred by Catherine Hancher.");
+    if (!voucher) return showError("Please confirm you were referred by The Networker UK.");
     if (!consent) return showError("Please agree to being contacted, and confirm you have read the privacy policy.");
 
     const button = form.querySelector("button[type=submit]");
@@ -70,9 +70,9 @@ if (form) {
     } catch (err) {
       button.disabled = false;
       button.textContent = "Send my referral";
-      const subject = encodeURIComponent("Referral from Catherine Hancher");
+      const subject = encodeURIComponent("Referral from The Networker UK");
       const body = encodeURIComponent(
-        `Name: ${name}\nEmail: ${email}\nPhone: ${phone}\nCover for: ${data.get("cover")}\nAlready insured: ${data.get("insured")}\nBest time: ${data.get("time") || ""}\n\n${data.get("message") || ""}\n\nReferred by Catherine Hancher. £100 Amazon voucher enquiry.`
+        `Name: ${name}\nEmail: ${email}\nPhone: ${phone}\nCover for: ${data.get("cover")}\nAlready insured: ${data.get("insured")}\nBest time: ${data.get("time") || ""}\n\n${data.get("message") || ""}\n\nReferred by The Networker UK. £100 Amazon voucher enquiry.`
       );
       showError("The form could not be sent just now. You can email Rosie directly and your referral will still be recorded.");
       const fallback = form.querySelector(".fallback");
