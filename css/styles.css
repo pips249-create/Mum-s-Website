@@ -153,8 +153,9 @@ h3 { font-size: 1.45rem; margin: 0 0 0.4rem; }
   padding: 1.6rem 1.5rem 1.4rem;
   box-shadow: var(--shadow);
 }
-.voucher-card p { color: rgba(255, 252, 248, 0.82); }
+.voucher-card p { color: rgba(255, 252, 248, 0.94); }
 .voucher-card .amount {
+  color: white;
   font-family: var(--serif);
   font-size: 4.4rem;
   line-height: 0.9;
@@ -162,7 +163,9 @@ h3 { font-size: 1.45rem; margin: 0 0 0.4rem; }
   font-weight: 560;
 }
 .voucher-card .amount span { font-size: 1.4rem; vertical-align: super; }
-.voucher-card a { color: #ffd0e4; }
+.voucher-card a { color: white; }
+.voucher-card .btn-light { color: var(--navy); }
+.voucher-card .btn-light:hover { background: var(--blush); color: var(--magenta-deep); }
 .referrer {
   display: inline-block;
   border: 1px solid rgba(255,255,255,0.25);
@@ -202,24 +205,42 @@ h3 { font-size: 1.45rem; margin: 0 0 0.4rem; }
 .quotes.three { grid-template-columns: repeat(3, 1fr); }
 .steps, .rewards { display: grid; gap: 1rem; }
 .steps { grid-template-columns: repeat(3, 1fr); }
+.start { padding-top: 0.4rem; padding-bottom: 1.5rem; }
+.start-stage {
+  background:
+    radial-gradient(900px 280px at 100% 0%, rgba(216, 56, 120, 0.42), transparent 58%),
+    linear-gradient(145deg, #241a55 0%, #3d226c 52%, #9a2464 100%);
+  color: white;
+  border-radius: 32px;
+  padding: 2.4rem 2.1rem 2rem;
+  box-shadow: 0 28px 70px rgba(36, 26, 85, 0.22);
+}
+.start-stage .kicker { color: #ffc6df; }
+.start-stage h2 { color: white; }
+.start-stage .section-head { margin-bottom: 1.4rem; }
+.start-stage .section-head p:last-child { color: rgba(255, 252, 248, 0.82); margin: 0; }
 .choices { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.75rem; }
 .choice {
-  border: 1.5px solid var(--line);
+  border: 1.5px solid transparent;
   background: var(--white);
   color: var(--ink);
   border-radius: 18px;
-  padding: 1.1rem 1rem;
+  padding: 1.15rem 1rem;
   font-size: 1.05rem;
   font-weight: 600;
-  text-align: left;
+  text-align: center;
   cursor: pointer;
+  box-shadow: 0 10px 24px rgba(20, 15, 46, 0.12);
+  transition: background 0.15s ease, color 0.15s ease, transform 0.15s ease;
 }
+.choice:hover { transform: translateY(-2px); }
 .choice[aria-pressed="true"] {
-  border-color: var(--magenta);
-  background: var(--blush);
+  background: var(--magenta);
+  color: white;
+  box-shadow: 0 12px 28px rgba(194, 24, 106, 0.35);
 }
-.choice-result { margin-top: 1rem; }
-.choice-result h3 { margin-top: 0; }
+.choice-result { margin-top: 1rem; color: var(--ink); }
+.choice-result h3 { margin-top: 0; color: var(--ink); }
 .rewards { grid-template-columns: repeat(3, 1fr); }
 .step-num {
   font-family: var(--serif);
@@ -235,6 +256,18 @@ h3 { font-size: 1.45rem; margin: 0 0 0.4rem; }
   border-radius: var(--radius);
   padding: 1.25rem 1.2rem 1.15rem;
 }
+.panel.reward {
+  padding: 0;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+.reward img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+.reward > div { padding: 1.05rem 1.15rem 1.15rem; }
 .panel strong { display: block; font-size: 1.05rem; margin-bottom: 0.35rem; }
 .list { margin: 0; padding-left: 1.1rem; }
 .list li { margin: 0.45rem 0; }
@@ -361,7 +394,9 @@ body > footer a { color: white; }
 
 @media (max-width: 900px) {
   .hero-grid, .split, .refer-grid, .contact-row, .footer-grid,
-  .values, .cards, .levels, .steps, .rewards, .quotes.three, .choices { grid-template-columns: 1fr; }
+  .values, .cards, .levels, .steps, .quotes.three, .choices { grid-template-columns: 1fr; }
+  .rewards { grid-template-columns: 1fr 1fr; }
+  .start-stage { padding: 1.5rem 1.1rem 1.25rem; border-radius: 24px; }
   .quotes { grid-template-columns: 1fr; }
   .menu-btn { display: inline-flex; }
   .nav-links {
@@ -382,6 +417,12 @@ body > footer a { color: white; }
   h1 { font-size: clamp(2.5rem, 12vw, 3.6rem); }
 }
 
+@media (max-width: 560px) {
+  .rewards { grid-template-columns: 1fr; }
+}
+
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
+  .choice { transition: none; }
+  .choice:hover { transform: none; }
 }
