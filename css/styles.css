@@ -199,6 +199,17 @@ h3 { font-size: 1.45rem; margin: 0 0 0.4rem; }
 .cards { grid-template-columns: repeat(3, 1fr); }
 .levels { grid-template-columns: repeat(3, 1fr); }
 .quotes { grid-template-columns: 1fr 1fr; }
+.quotes.three { grid-template-columns: repeat(3, 1fr); }
+.steps, .rewards { display: grid; gap: 1rem; }
+.steps { grid-template-columns: repeat(3, 1fr); }
+.rewards { grid-template-columns: repeat(3, 1fr); }
+.step-num {
+  font-family: var(--serif);
+  font-size: 2rem;
+  color: var(--magenta);
+  line-height: 1;
+  margin-bottom: 0.35rem;
+}
 
 .panel, .quote, .level {
   background: var(--white);
@@ -332,7 +343,7 @@ body > footer a { color: white; }
 
 @media (max-width: 900px) {
   .hero-grid, .split, .refer-grid, .contact-row, .footer-grid,
-  .values, .cards, .levels { grid-template-columns: 1fr; }
+  .values, .cards, .levels, .steps, .rewards, .quotes.three { grid-template-columns: 1fr; }
   .quotes { grid-template-columns: 1fr; }
   .menu-btn { display: inline-flex; }
   .nav-links {
