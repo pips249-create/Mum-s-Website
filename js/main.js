@@ -295,78 +295,54 @@ if (perkCarousel) {
   const track = perkCarousel.querySelector(".perk-track");
   const pauseBtn = perkCarousel.querySelector("[data-perk-pause]");
   const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  let timer;
-  let busy = false;
-  let moving = "";
+  let offset = 0;
+  let last = 0;
   let userPaused = reduced;
-  let hoverPaused = false;
+  const speed = 42;
 
   const step = () => {
     const card = track.firstElementChild;
+    if (!card) return 0;
     const gap = parseFloat(getComputedStyle(track).columnGap) || 0;
     return card.getBoundingClientRect().width + gap;
   };
 
-  const play = () => {
-    clearInterval(timer);
-    if (userPaused || hoverPaused || reduced || document.hidden) return;
-    timer = setInterval(() => go(1), 3200);
-  };
-
-  const go = (direction) => {
-    if (busy || !track.firstElementChild) return;
+  const nudge = (direction) => {
     const distance = step();
-    if (reduced) {
-      if (direction > 0) track.appendChild(track.firstElementChild);
-      else track.prepend(track.lastElementChild);
-      return;
-    }
-    busy = true;
-    moving = direction > 0 ? "next" : "prev";
-    if (direction < 0) {
-      track.prepend(track.lastElementChild);
-      track.style.transition = "none";
-      track.style.transform = `translateX(${-distance}px)`;
-      track.offsetHeight;
-      track.style.transition = "";
-      track.style.transform = "translateX(0)";
-      return;
-    }
-    track.style.transform = `translateX(${-distance}px)`;
+    if (!distance) return;
+    if (direction > 0) track.appendChild(track.firstElementChild);
+    else track.prepend(track.lastElementChild);
+    offset = 0;
+    track.style.transition = "none";
+    track.style.transform = "translateX(0)";
   };
 
-  track.addEventListener("transitionend", (event) => {
-    if (event.target !== track || event.propertyName !== "transform") return;
-    if (moving === "next") {
+  const tick = (now) => {
+    if (!last) last = now;
+    const dt = Math.min(0.05, (now - last) / 1000);
+    last = now;
+    if (!userPaused && !reduced && !document.hidden) {
+      offset += speed * dt;
+      const distance = step();
+      if (distance > 0 && offset >= distance) {
+        offset -= distance;
+        track.appendChild(track.firstElementChild);
+      }
       track.style.transition = "none";
-      track.appendChild(track.firstElementChild);
-      track.style.transform = "translateX(0)";
-      track.offsetHeight;
-      track.style.transition = "";
+      track.style.transform = `translateX(${-offset}px)`;
     }
-    busy = false;
-    moving = "";
-  });
+    requestAnimationFrame(tick);
+  };
 
-  perkCarousel.querySelector("[data-perk-next]").addEventListener("click", () => {
-    go(1);
-    play();
-  });
-  perkCarousel.querySelector("[data-perk-prev]").addEventListener("click", () => {
-    go(-1);
-    play();
-  });
+  perkCarousel.querySelector("[data-perk-next]").addEventListener("click", () => nudge(1));
+  perkCarousel.querySelector("[data-perk-prev]").addEventListener("click", () => nudge(-1));
   pauseBtn.addEventListener("click", () => {
     userPaused = !userPaused;
     pauseBtn.textContent = userPaused ? "Play" : "Pause";
     pauseBtn.setAttribute("aria-pressed", userPaused ? "true" : "false");
-    play();
+    last = 0;
   });
-  perkCarousel.addEventListener("mouseenter", () => { hoverPaused = true; play(); });
-  perkCarousel.addEventListener("mouseleave", () => { hoverPaused = false; play(); });
-  perkCarousel.addEventListener("focusin", () => { hoverPaused = true; play(); });
-  perkCarousel.addEventListener("focusout", () => { hoverPaused = false; play(); });
-  document.addEventListener("visibilitychange", play);
+  document.addEventListener("visibilitychange", () => { last = 0; });
 
   if (reduced) {
     pauseBtn.textContent = "Play";
@@ -379,5 +355,5 @@ if (perkCarousel) {
     });
   }, { root: viewport, threshold: [0.7, 1] });
   track.querySelectorAll(".perk").forEach((card) => watcher.observe(card));
-  play();
+  requestAnimationFrame(tick);
 }
