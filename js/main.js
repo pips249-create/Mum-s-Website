@@ -21,6 +21,59 @@ if (menuBtn && navLinks) {
   });
 }
 
+const choiceCopy = {
+  personal: {
+    title: "Personal cover",
+    cover: "Just me",
+    text: "This is a plan for you. Vitality’s own illustration, for one adult and including Insurance Premium Tax, starts from £25 a month at age 18 and rises to £38 a month for ages 47 to 79. That is not your price. Age, health and the level of cover all change it. Rosie will quote the plan you actually need."
+  },
+  family: {
+    title: "Family cover",
+    cover: "Me and my family",
+    text: "One plan can include you, a partner and children. Rosie works out who to include, and which level fits the household budget. The £25 to £38 illustration is for one adult only, so a family price is worked out separately."
+  },
+  self: {
+    title: "Self-employed cover",
+    cover: "I’m self-employed",
+    text: "If your income stops when you are ill, this is usually a personal plan. If you trade through a limited company, it may sit with the business instead. Rosie explains which arrangement fits. She does not give tax advice."
+  },
+  business: {
+    title: "Business cover",
+    cover: "My business",
+    text: "This is cover for you and your staff, often paid by the company. What the business can treat as a cost depends on how it is set up. Rosie explains the cover. An accountant confirms the tax treatment."
+  }
+};
+
+document.querySelectorAll(".choice").forEach((button) => {
+  button.addEventListener("click", () => {
+    const choice = choiceCopy[button.dataset.choice];
+    document.querySelectorAll(".choice").forEach((item) => {
+      item.setAttribute("aria-pressed", item === button ? "true" : "false");
+    });
+    const result = document.querySelector("#choice-result");
+    document.querySelector("#choice-title").textContent = choice.title;
+    document.querySelector("#choice-copy").textContent = choice.text;
+    result.hidden = false;
+    const cover = document.querySelector("#cover");
+    if (cover) cover.value = choice.cover;
+    const next = document.querySelector("#choice-next");
+    next.hidden = true;
+    next.textContent = "";
+  });
+});
+
+document.querySelectorAll("[data-insured]").forEach((button) => {
+  button.addEventListener("click", () => {
+    const insured = document.querySelector("#insured");
+    if (insured) insured.value = button.dataset.insured;
+    const next = document.querySelector("#choice-next");
+    next.hidden = false;
+    next.textContent = button.dataset.insured === "No"
+      ? "Rosie will start from what you need, and what you want to pay. The call is 30 minutes and there is no obligation."
+      : "Bring the plan you have, even roughly. Rosie will say whether it still fits, or whether Vitality would do the job for less.";
+  });
+});
+
 const form = document.querySelector("#referral-form");
 if (form) {
   const error = form.querySelector(".error");

@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,620&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/styles.css?v=3">
+  <link rel="stylesheet" href="css/styles.css?v=4">
 </head>
 <body>
   <a class="skip" href="#main">Skip to content</a>
@@ -56,6 +56,36 @@
       </div>
     </section>
 
+    <section class="section" id="start" style="padding-top:0">
+      <div class="wrap">
+        <div class="section-head">
+          <p class="kicker">Start here</p>
+          <h2>Who is the cover for?</h2>
+          <p>Choose one. Rosie will explain the rest on the call. This is not a quote.</p>
+        </div>
+        <div class="choices" role="group" aria-label="Who the cover is for">
+          <button class="choice" type="button" data-choice="personal" aria-pressed="false">Personal</button>
+          <button class="choice" type="button" data-choice="family" aria-pressed="false">Family</button>
+          <button class="choice" type="button" data-choice="self" aria-pressed="false">Self-employed</button>
+          <button class="choice" type="button" data-choice="business" aria-pressed="false">Business</button>
+        </div>
+        <div class="panel choice-result" id="choice-result" hidden>
+          <h3 id="choice-title"></h3>
+          <p id="choice-copy"></p>
+          <p class="muted" id="choice-question">Do you already have health insurance?</p>
+          <div class="hero-actions" id="insured-choices">
+            <button class="btn btn-ghost" type="button" data-insured="No">Not yet</button>
+            <button class="btn btn-ghost" type="button" data-insured="Yes — I’d like it reviewed">Yes, please review it</button>
+          </div>
+          <p id="choice-next" hidden></p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="https://outlook.office365.com/owa/calendar/DiscussionwithRosie@VitalityCloud.onmicrosoft.com/bookings/">Book a 30-minute chat</a>
+            <a class="btn btn-ghost" href="#refer">I was referred by The Networker UK</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <section class="section" id="steps">
       <div class="wrap">
         <div class="section-head">
@@ -67,7 +97,7 @@
           <article class="panel"><p class="step-num">2</p><strong>A plan that fits</strong><span class="muted">She explains the options for you, your family or your business, and what a plan does not cover.</span></article>
           <article class="panel"><p class="step-num">3</p><strong>Rosie stays with you</strong><span class="muted">After a plan starts, she helps with a claim, or when you just want advice.</span></article>
         </div>
-        <p class="note">Cover can include a GP appointment, a faster specialist referral, hospital treatment and cancer cover, depending on the plan. Benefits are subject to any excess that may have been chosen and any exclusions that may apply. <a href="cover.html">Read how cover works</a>.</p>
+        <p class="note">Cover can include a GP appointment, a faster specialist referral, hospital treatment and cancer cover, depending on the plan. Vitality’s terms say that when a Vitality GP or in-network physiotherapist refers you to a specialist for diagnosis, you pay £100 per referral. Benefits are subject to any excess that may have been chosen and any exclusions that may apply. <a href="cover.html">Read how cover works</a>.</p>
       </div>
     </section>
 
@@ -89,7 +119,7 @@
           <article class="panel"><strong>Trek</strong><span class="muted">Save up to 20% on a bike and accessories.</span></article>
           <article class="panel"><strong>Fitbit and Garmin</strong><span class="muted">Get up to 30% off a range of Fitbit devices, and up to 40% off a range of Garmin devices. Postage and packaging applies.</span></article>
         </div>
-        <p class="note">Rewards are provided by Vitality and its partners, not by My Medical Cover. Partners also include names such as Virgin Active, PureGym and Nuffield Health. Rosie can tell you which rewards apply to a plan. <a href="https://www.vitality.co.uk/rewards/">See Vitality’s current rewards</a>.</p>
+        <p class="note">Rewards are provided by Vitality and its partners, not by My Medical Cover. A joining fee of up to £80 applies to a discounted gym membership. Each adult can have one, at Nuffield Health, PureGym or Virgin Active. Virgin Active Chiswick Riverside and Mayfair are excluded, and only certain gym packages are included. Offers can change. <a href="https://www.vitality.co.uk/rewards/">See Vitality’s current rewards</a>.</p>
       </div>
     </section>
 
@@ -175,6 +205,7 @@
                 <select id="cover" name="cover">
                   <option>Just me</option>
                   <option>Me and my family</option>
+                  <option>I’m self-employed</option>
                   <option>My business</option>
                   <option>Not sure yet</option>
                 </select>
