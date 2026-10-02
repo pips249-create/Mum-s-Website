@@ -123,7 +123,7 @@ if (form) {
     if (name.length < 2) return showError("Please add your name.");
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return showError("Please add a valid email address.");
     if (phone.replace(/\D/g, "").length < 10) return showError("Please add a phone number Rosie can call.");
-    if (!voucher) return showError("Please confirm you were referred by The Networker UK.");
+    if (!voucher) return showError("Please confirm you are a member of The Networker UK.");
     if (!consent) return showError("Please agree to being contacted, and confirm you have read the privacy policy.");
 
     const button = form.querySelector("button[type=submit]");
