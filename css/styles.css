@@ -620,6 +620,18 @@ input:focus, select:focus, textarea:focus {
 }
 .terms { font-size: 0.95rem; }
 .terms li { margin: 0.4rem 0; }
+.refer-networker {
+  display: inline-flex;
+  margin: 0.35rem 0 0.2rem;
+  background: var(--navy);
+  border-radius: 16px;
+  padding: 0.65rem 0.85rem 0.5rem;
+}
+.refer-networker img {
+  height: 58px;
+  width: auto;
+  display: block;
+}
 
 .contact-row {
   display: grid;
