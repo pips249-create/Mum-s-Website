@@ -226,13 +226,19 @@ h3 { font-size: 1.45rem; margin: 0 0 0.4rem; }
   font-size: 0.88rem;
 }
 .perk-band { padding: 0.4rem 0 1.2rem; }
-.perk-row {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
+.perk-carousel { position: relative; }
+.perk-viewport {
+  container-type: inline-size;
+  overflow: hidden;
+}
+.perk-track {
+  display: flex;
   gap: 0.75rem;
+  transition: transform 0.55s ease;
 }
 .perk {
   display: flex;
+  flex: 0 0 calc((100cqi - 2.25rem) / 4);
   flex-direction: column;
   background: var(--white);
   color: var(--ink);
@@ -241,6 +247,41 @@ h3 { font-size: 1.45rem; margin: 0 0 0.4rem; }
   border-radius: 18px;
   overflow: hidden;
   box-shadow: 0 10px 24px rgba(20, 15, 46, 0.08);
+}
+.perk-controls {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 0.9rem;
+}
+.perk-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 2.6rem;
+  height: 2.6rem;
+  padding: 0 0.85rem;
+  border-radius: 999px;
+  border: 1.5px solid rgba(28, 21, 66, 0.22);
+  background: var(--white);
+  color: var(--ink);
+  font-weight: 600;
+  cursor: pointer;
+}
+.perk-btn svg {
+  width: 1.15rem;
+  height: 1.15rem;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.perk-pause { min-width: 5.2rem; }
+@container (max-width: 900px) {
+  .perk { flex-basis: calc((100cqi - 0.75rem) / 2); }
+}
+@container (max-width: 560px) {
+  .perk { flex-basis: calc((100cqi - 0.75rem) / 1.2); }
 }
 .perk img {
   width: 100%;
@@ -560,7 +601,7 @@ body > footer a { color: white; }
 @media (max-width: 900px) {
   .hero-grid, .split, .refer-grid, .contact-row, .footer-grid,
   .values, .cards, .levels, .steps, .quotes.three, .choices { grid-template-columns: 1fr; }
-  .rewards, .perk-row { grid-template-columns: 1fr 1fr; }
+  .rewards { grid-template-columns: 1fr 1fr; }
   .start-stage { padding: 1.5rem 1.1rem 1.25rem; border-radius: 24px; }
   .choice { flex-direction: row; justify-content: flex-start; text-align: left; padding-left: 1.1rem; gap: 0.75rem; }
   .quiz-options { grid-template-columns: 1fr; }
@@ -594,4 +635,5 @@ body > footer a { color: white; }
   html { scroll-behavior: auto; }
   .choice { transition: none; }
   .choice:hover { transform: none; }
+  .perk-track { transition: none; }
 }

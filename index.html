@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,620&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/styles.css?v=13">
+  <link rel="stylesheet" href="css/styles.css?v=14">
 </head>
 <body>
   <a class="skip" href="#main">Skip to content</a>
@@ -74,23 +74,56 @@
           <h2>Everyday perks, with a qualifying plan.</h2>
           <p>These are examples from Vitality’s own rewards list. The offers depend on the plan and can change.</p>
         </div>
-        <div class="perk-row">
-          <a class="perk" href="rewards.html">
-            <img src="assets/rewards/watch.jpg" alt="A wrist wearing a smartwatch" width="1200" height="900">
-            <span><strong>Apple Watch</strong><small>With qualifying health and life plans</small></span>
-          </a>
-          <a class="perk" href="rewards.html">
-            <img src="assets/rewards/coffee.jpg" alt="A cup of coffee on a marble table" width="1200" height="900">
-            <span><strong>Caffè Nero</strong><small>A weekly drink reward for getting moving</small></span>
-          </a>
-          <a class="perk" href="rewards.html">
-            <img src="assets/rewards/run.jpg" alt="A runner on a tree-lined park path" width="1200" height="900">
-            <span><strong>Gym membership</strong><small>Discounted at selected gyms. A joining fee may apply</small></span>
-          </a>
-          <a class="perk" href="rewards.html">
-            <img src="assets/rewards/spa.jpg" alt="Folded white towels with a pale flower" width="1200" height="900">
-            <span><strong>Champneys</strong><small>Money off spa days and short stays</small></span>
-          </a>
+        <div class="perk-carousel" data-perk-carousel role="region" aria-roledescription="carousel" aria-label="Vitality rewards">
+          <div class="perk-viewport">
+            <div class="perk-track">
+              <a class="perk" href="rewards.html">
+                <img src="assets/rewards/watch.jpg" alt="A wrist wearing a smartwatch" width="1200" height="900">
+                <span><strong>Apple Watch</strong><small>With qualifying health and life plans</small></span>
+              </a>
+              <a class="perk" href="rewards.html">
+                <img src="assets/rewards/coffee.jpg" alt="A cup of coffee on a marble table" width="1200" height="900">
+                <span><strong>Caffè Nero</strong><small>A weekly drink reward for getting moving</small></span>
+              </a>
+              <a class="perk" href="rewards.html">
+                <img src="assets/rewards/run.jpg" alt="A runner on a tree-lined park path" width="1200" height="900">
+                <span><strong>Gym membership</strong><small>Discounted at selected gyms. A joining fee may apply</small></span>
+              </a>
+              <a class="perk" href="rewards.html">
+                <img src="assets/rewards/spa.jpg" alt="Folded white towels with a pale flower" width="1200" height="900">
+                <span><strong>Champneys</strong><small>Money off spa days and short stays</small></span>
+              </a>
+              <a class="perk" href="rewards.html">
+                <img src="assets/rewards/groceries.jpg" alt="A paper bag of fresh fruit and vegetables" width="1200" height="900">
+                <span><strong>Waitrose &amp; Partners</strong><small>Up to 25% cashback on Good Health food. A spend cap applies</small></span>
+              </a>
+              <a class="perk" href="rewards.html">
+                <img src="assets/rewards/calm.jpg" alt="Someone sitting quietly by a bright window" width="1200" height="900">
+                <span><strong>Headspace</strong><small>Guided meditation and more</small></span>
+              </a>
+              <a class="perk" href="rewards.html">
+                <img src="assets/rewards/folding-bike.jpg" alt="A compact folding bicycle against a pale wall" width="1200" height="900">
+                <span><strong>Brompton</strong><small>Save £250 on a Brompton bike</small></span>
+              </a>
+              <a class="perk" href="rewards.html">
+                <img src="assets/rewards/bike.jpg" alt="A road bicycle on a quiet country lane" width="1200" height="900">
+                <span><strong>Trek</strong><small>Save up to 20% on a bike and accessories</small></span>
+              </a>
+              <a class="perk" href="rewards.html">
+                <img src="assets/rewards/tracker.jpg" alt="A fitness wristband beside a pair of running shoes" width="1200" height="900">
+                <span><strong>Fitbit and Garmin</strong><small>Money off selected devices. Postage applies</small></span>
+              </a>
+            </div>
+          </div>
+          <div class="perk-controls">
+            <button class="perk-btn" type="button" data-perk-prev aria-label="Previous perks">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14.5 6.5 9 12l5.5 5.5"/></svg>
+            </button>
+            <button class="perk-btn perk-pause" type="button" data-perk-pause aria-pressed="false">Pause</button>
+            <button class="perk-btn" type="button" data-perk-next aria-label="Next perks">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9.5 6.5 15 12l-5.5 5.5"/></svg>
+            </button>
+          </div>
         </div>
         <p class="note">Rewards are provided by Vitality and its partners, not by My Medical Cover. <a href="rewards.html">See the rewards and the conditions</a>.</p>
       </div>
@@ -242,7 +275,7 @@
       </div>
     </div>
   </footer>
-  <script src="js/main.js?v=3"></script>
+  <script src="js/main.js?v=4"></script>
   <script>document.getElementById("year").textContent = new Date().getFullYear();</script>
 </body>
 </html>

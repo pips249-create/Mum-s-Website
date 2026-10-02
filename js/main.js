@@ -270,3 +270,96 @@ if (quiz && quizForm) {
     }
   });
 }
+
+const perkCarousel = document.querySelector("[data-perk-carousel]");
+if (perkCarousel) {
+  const viewport = perkCarousel.querySelector(".perk-viewport");
+  const track = perkCarousel.querySelector(".perk-track");
+  const pauseBtn = perkCarousel.querySelector("[data-perk-pause]");
+  const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  let timer;
+  let busy = false;
+  let moving = "";
+  let userPaused = reduced;
+  let hoverPaused = false;
+
+  const step = () => {
+    const card = track.firstElementChild;
+    const gap = parseFloat(getComputedStyle(track).columnGap) || 0;
+    return card.getBoundingClientRect().width + gap;
+  };
+
+  const play = () => {
+    clearInterval(timer);
+    if (userPaused || hoverPaused || reduced || document.hidden) return;
+    timer = setInterval(() => go(1), 3200);
+  };
+
+  const go = (direction) => {
+    if (busy || !track.firstElementChild) return;
+    const distance = step();
+    if (reduced) {
+      if (direction > 0) track.appendChild(track.firstElementChild);
+      else track.prepend(track.lastElementChild);
+      return;
+    }
+    busy = true;
+    moving = direction > 0 ? "next" : "prev";
+    if (direction < 0) {
+      track.prepend(track.lastElementChild);
+      track.style.transition = "none";
+      track.style.transform = `translateX(${-distance}px)`;
+      track.offsetHeight;
+      track.style.transition = "";
+      track.style.transform = "translateX(0)";
+      return;
+    }
+    track.style.transform = `translateX(${-distance}px)`;
+  };
+
+  track.addEventListener("transitionend", (event) => {
+    if (event.target !== track || event.propertyName !== "transform") return;
+    if (moving === "next") {
+      track.style.transition = "none";
+      track.appendChild(track.firstElementChild);
+      track.style.transform = "translateX(0)";
+      track.offsetHeight;
+      track.style.transition = "";
+    }
+    busy = false;
+    moving = "";
+  });
+
+  perkCarousel.querySelector("[data-perk-next]").addEventListener("click", () => {
+    go(1);
+    play();
+  });
+  perkCarousel.querySelector("[data-perk-prev]").addEventListener("click", () => {
+    go(-1);
+    play();
+  });
+  pauseBtn.addEventListener("click", () => {
+    userPaused = !userPaused;
+    pauseBtn.textContent = userPaused ? "Play" : "Pause";
+    pauseBtn.setAttribute("aria-pressed", userPaused ? "true" : "false");
+    play();
+  });
+  perkCarousel.addEventListener("mouseenter", () => { hoverPaused = true; play(); });
+  perkCarousel.addEventListener("mouseleave", () => { hoverPaused = false; play(); });
+  perkCarousel.addEventListener("focusin", () => { hoverPaused = true; play(); });
+  perkCarousel.addEventListener("focusout", () => { hoverPaused = false; play(); });
+  document.addEventListener("visibilitychange", play);
+
+  if (reduced) {
+    pauseBtn.textContent = "Play";
+    pauseBtn.setAttribute("aria-pressed", "true");
+  }
+
+  const watcher = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      entry.target.tabIndex = entry.intersectionRatio > 0.7 ? 0 : -1;
+    });
+  }, { root: viewport, threshold: [0.7, 1] });
+  track.querySelectorAll(".perk").forEach((card) => watcher.observe(card));
+  play();
+}
